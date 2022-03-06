@@ -1,4 +1,7 @@
+import 'package:fake_news_app/bloc/cubit.dart';
+import 'package:fake_news_app/posts/posts_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,12 +28,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 43, 42, 42),
-        title: Text('Fake News'),
-        centerTitle: true,
-      ),
-    );
+    return BlocProvider<PostsCubit>(
+        create: (context) => PostsCubit()..posts, child: PostsView());
   }
 }
